@@ -1,0 +1,70 @@
+package org.mesdag.xaero_wormhole;
+
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+
+import java.util.UUID;
+
+public record WormholeToPlayerPacketC2S(UUID playerId) implements CustomPacketPayload {
+    public static final Type<WormholeToPlayerPacketC2S> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(XaeroWormhole.MODID, "wormhole_to_player"));
+    public static final StreamCodec<FriendlyByteBuf, WormholeToPlayerPacketC2S> STREAM_CODEC = new StreamCodec<>() {
+        @Override
+        public WormholeToPlayerPacketC2S decode(FriendlyByteBuf friendlyByteBuf) {
+            return new WormholeToPlayerPacketC2S(friendlyByteBuf.readUUID());
+        }
+
+        @Override
+        public void encode(FriendlyByteBuf o, WormholeToPlayerPacketC2S wormholeToPlayerPacketC2S) {
+            o.writeUUID(wormholeToPlayerPacketC2S.playerId);
+        }
+    };
+
+    @Override
+    public Type<WormholeToPlayerPacketC2S> type() {
+        return TYPE;
+    }
+
+    public void handle(IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (context.player() instanceof ServerPlayer serverPlayer) {
+                ServerPlayer target = serverPlayer.server.getPlayerList().getPlayer(playerId);
+                if (target != null && serverPlayer.getTeam() == target.getTeam()) {
+                    ItemStack potion = getWormholePotion(serverPlayer);
+                    if (!potion.isEmpty()) {
+                        potion.shrink(1);
+                        teleport(serverPlayer, target);
+                    }
+                }
+            }
+        }).exceptionally(e -> {
+            context.disconnect(Component.translatable("neoforge.network.invalid_flow", e.getMessage()));
+            return null;
+        });
+    }
+
+    private static ItemStack getWormholePotion(ServerPlayer serverPlayer) {
+        Inventory inventory = serverPlayer.getInventory();
+        ItemStack stack = inventory.offhand.getFirst();
+        if (!stack.isEmpty() && stack.is(XaeroWormhole.WORMHOLE_POTION)) {
+            return stack;
+        } else {
+            for (ItemStack itemStack : inventory.items) {
+                if (!itemStack.isEmpty() && itemStack.is(XaeroWormhole.WORMHOLE_POTION)) {
+                    return itemStack;
+                }
+            }
+            return ItemStack.EMPTY;
+        }
+    }
+
+    private void teleport(ServerPlayer serverPlayer, ServerPlayer target) {
+        serverPlayer.teleportTo(serverPlayer.serverLevel(), target.getX(), target.getY(), target.getZ(), serverPlayer.getXRot(), serverPlayer.getYRot());
+    }
+}
