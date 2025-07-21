@@ -1,8 +1,8 @@
-package org.mesdag.xaero_wormhole.mixin.xaero;
+package org.mesdag.map_wormhole.mixin.xaero;
 
 import org.jetbrains.annotations.Nullable;
-import org.mesdag.xaero_wormhole.xaero.IGuiMap;
-import org.mesdag.xaero_wormhole.xaero.XaeroHelper;
+import org.mesdag.map_wormhole.xaero.IGuiMap;
+import org.mesdag.map_wormhole.xaero.XaeroHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.Shadow;

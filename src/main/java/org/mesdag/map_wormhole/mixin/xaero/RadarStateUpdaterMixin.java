@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole.mixin.xaero;
+package org.mesdag.map_wormhole.mixin.xaero;
 
 import com.google.common.collect.Iterables;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;

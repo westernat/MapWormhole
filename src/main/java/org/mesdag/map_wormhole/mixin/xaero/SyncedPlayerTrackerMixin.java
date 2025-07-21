@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole.mixin.xaero;
+package org.mesdag.map_wormhole.mixin.xaero;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;

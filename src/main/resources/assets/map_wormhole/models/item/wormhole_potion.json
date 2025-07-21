@@ -1,6 +1,6 @@
 {
     "parent": "minecraft:item/generated",
     "textures": {
-        "layer0": "xaero_wormhole:item/wormhole_potion"
+        "layer0": "map_wormhole:item/wormhole_potion"
     }
 }

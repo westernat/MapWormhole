@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole;
+package org.mesdag.map_wormhole;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 import java.util.UUID;
 
 public record WormholeToPlayerPacketC2S(UUID playerId) implements CustomPacketPayload {
-    public static final Type<WormholeToPlayerPacketC2S> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(XaeroWormhole.MODID, "wormhole_to_player"));
+    public static final Type<WormholeToPlayerPacketC2S> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(MapWormhole.MODID, "wormhole_to_player"));
     public static final StreamCodec<FriendlyByteBuf, WormholeToPlayerPacketC2S> STREAM_CODEC = new StreamCodec<>() {
         @Override
         public WormholeToPlayerPacketC2S decode(FriendlyByteBuf friendlyByteBuf) {
@@ -52,11 +52,11 @@ public record WormholeToPlayerPacketC2S(UUID playerId) implements CustomPacketPa
     private static ItemStack getWormholePotion(ServerPlayer serverPlayer) {
         Inventory inventory = serverPlayer.getInventory();
         ItemStack stack = inventory.offhand.getFirst();
-        if (!stack.isEmpty() && stack.is(XaeroWormhole.WORMHOLE_POTION)) {
+        if (!stack.isEmpty() && stack.is(MapWormhole.WORMHOLE_POTION)) {
             return stack;
         } else {
             for (ItemStack itemStack : inventory.items) {
-                if (!itemStack.isEmpty() && itemStack.is(XaeroWormhole.WORMHOLE_POTION)) {
+                if (!itemStack.isEmpty() && itemStack.is(MapWormhole.WORMHOLE_POTION)) {
                     return itemStack;
                 }
             }

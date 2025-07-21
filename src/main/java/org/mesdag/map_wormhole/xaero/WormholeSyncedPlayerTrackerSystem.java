@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole.xaero;
+package org.mesdag.map_wormhole.xaero;
 
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.scores.PlayerTeam;

@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole;
+package org.mesdag.map_wormhole;
 
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
@@ -14,15 +14,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Mod(XaeroWormhole.MODID)
-public class XaeroWormhole {
-    public static final String MODID = "xaero_wormhole";
-    public static final Logger LOGGER = LoggerFactory.getLogger("XaeroWormhole");
+@Mod(MapWormhole.MODID)
+public class MapWormhole {
+    public static final String MODID = "map_wormhole";
+    public static final Logger LOGGER = LoggerFactory.getLogger("MapWormhole");
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredItem<Item> WORMHOLE_POTION = ITEMS.register("wormhole_potion", () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
 
-    public XaeroWormhole(IEventBus modEventBus, ModContainer modContainer) {
+    public MapWormhole(IEventBus modEventBus, ModContainer modContainer) {
         ITEMS.register(modEventBus);
         modEventBus.addListener(this::registerPayloadHandlers);
         modEventBus.addListener(this::buildCreativeModeTabContents);

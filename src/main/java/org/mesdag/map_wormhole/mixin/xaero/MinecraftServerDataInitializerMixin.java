@@ -1,7 +1,7 @@
-package org.mesdag.xaero_wormhole.mixin.xaero;
+package org.mesdag.map_wormhole.mixin.xaero;
 
 import net.minecraft.server.MinecraftServer;
-import org.mesdag.xaero_wormhole.xaero.WormholeSyncedPlayerTrackerSystem;
+import org.mesdag.map_wormhole.xaero.WormholeSyncedPlayerTrackerSystem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;

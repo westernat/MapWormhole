@@ -1,11 +1,11 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "org.mesdag.xaero_wormhole.mixin",
+    "package": "org.mesdag.map_wormhole.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
         "xaero.MinecraftServerDataInitializerMixin",
-        "xaero.SyncedPlayerTrackerMixin",
+        "xaero.SyncedPlayerTrackerMixin"
     ],
     "client": [
         "xaero.GuiMapMixin",

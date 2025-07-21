@@ -1,8 +1,8 @@
-package org.mesdag.xaero_wormhole.xaero;
+package org.mesdag.map_wormhole.xaero;
 
 import net.minecraft.client.player.RemotePlayer;
 import net.neoforged.neoforge.network.PacketDistributor;
-import org.mesdag.xaero_wormhole.WormholeToPlayerPacketC2S;
+import org.mesdag.map_wormhole.WormholeToPlayerPacketC2S;
 import xaero.map.radar.tracker.PlayerTrackerMapElement;
 
 import java.util.UUID;

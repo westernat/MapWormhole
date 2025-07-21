@@ -1,4 +1,4 @@
-package org.mesdag.xaero_wormhole.xaero;
+package org.mesdag.map_wormhole.xaero;
 
 import org.jetbrains.annotations.Nullable;
 
