@@ -11,13 +11,10 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Mod(MapWormhole.MODID)
 public class MapWormhole {
     public static final String MODID = "map_wormhole";
-    public static final Logger LOGGER = LoggerFactory.getLogger("MapWormhole");
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredItem<Item> WORMHOLE_POTION = ITEMS.register("wormhole_potion", () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON)));
