@@ -1,0 +1,24 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "org.mesdag.map_wormhole.mixin",
+    "compatibilityLevel": "JAVA_17",
+    "refmap": "map_wormhole.refmap.json",
+    "mixins": [
+        "ftbchunks.LongRangePlayerTrackerMixin",
+        "xaero.MinecraftServerDataInitializerMixin",
+        "xaero.SyncedPlayerTrackerMixin"
+    ],
+    "client": [
+        "ftbchunks.EntityMapIconMixin",
+        "ftbchunks.TrackedPlayerMapIconMixin",
+        "xaero.GuiMapMixin",
+        "xaero.RadarStateUpdaterMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "overwrites": {
+        "requireAnnotations": true
+    }
+}

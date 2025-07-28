@@ -1,0 +1,21 @@
+package org.mesdag.map_wormhole.mixin.ftbchunks;
+
+import dev.ftb.mods.ftbchunks.FTBChunksWorldConfig;
+import net.minecraft.server.level.ServerPlayer;
+import org.mesdag.map_wormhole.WormholeToPlayerPacketC2S;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Pseudo
+@Mixin(targets = "dev.ftb.mods.ftbchunks.LongRangePlayerTracker", remap = false)
+public abstract class LongRangePlayerTrackerMixin {
+    @Inject(method = "shouldTrack", at = @At("HEAD"), cancellable = true)
+    private void visible(ServerPlayer p1, ServerPlayer p2, int maxDistSq, CallbackInfoReturnable<Boolean> cir) {
+        if ((FTBChunksWorldConfig.LOCATION_MODE_OVERRIDE.get() || WormholeToPlayerPacketC2S.isTrackable(p1, p2))) {
+            cir.setReturnValue(true);
+        }
+    }
+}

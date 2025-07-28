@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "food",
+    "key": {
+        "#": {
+            "item": "minecraft:ender_pearl"
+        },
+        "@": {
+            "item": "minecraft:dragon_breath"
+        }
+    },
+    "pattern": [
+        " # ",
+        "#@#",
+        " # "
+    ],
+    "result": {
+        "count": 4,
+        "item": "map_wormhole:wormhole_potion"
+    }
+}
