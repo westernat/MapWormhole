@@ -11,6 +11,13 @@ group = mod_group_id
 repositories {
     mavenLocal()
     maven { url = "https://www.cursemaven.com" }
+    maven {
+        // Shedaniel's maven (Architectury API)
+        url = "https://maven.architectury.dev"
+        content {
+            includeGroup "dev.architectury"
+        }
+    }
 }
 
 base {
@@ -40,7 +47,7 @@ neoForge {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
 
-            programArguments.addAll '--username', 'Westernat'
+            programArguments.addAll '--username', 'Westernat2'
         }
 
         server {
@@ -99,8 +106,21 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    implementation "curse.maven:xaeros-minimap-263420:6515043"
-    implementation "curse.maven:xaeros-world-map-317780:6538359"
+    compileOnly "curse.maven:xaeros-minimap-263420:6515043"
+    compileOnly "curse.maven:xaeros-world-map-317780:6538359"
+    if (false) {
+        runtimeOnly "curse.maven:xaeros-minimap-263420:6515043"
+        runtimeOnly "curse.maven:xaeros-world-map-317780:6538359"
+    }
+
+    compileOnly "curse.maven:ftb-chunks-forge-314906:5968500"
+    compileOnly "curse.maven:ftb-library-forge-404465:6807431"
+    if (true) {
+        runtimeOnly "curse.maven:ftb-chunks-forge-314906:5968500"
+        runtimeOnly "curse.maven:ftb-library-forge-404465:6807431"
+        runtimeOnly "curse.maven:ftb-teams-forge-404468:6119437"
+        runtimeOnly "dev.architectury:architectury-neoforge:${architectury_version}"
+    }
 }
 
 tasks.withType(ProcessResources).configureEach {

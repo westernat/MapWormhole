@@ -4,10 +4,13 @@
     "package": "org.mesdag.map_wormhole.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [
+        "ftbchunks.LongRangePlayerTrackerMixin",
         "xaero.MinecraftServerDataInitializerMixin",
         "xaero.SyncedPlayerTrackerMixin"
     ],
     "client": [
+        "ftbchunks.EntityMapIconMixin",
+        "ftbchunks.TrackedPlayerMapIconMixin",
         "xaero.GuiMapMixin",
         "xaero.RadarStateUpdaterMixin"
     ],

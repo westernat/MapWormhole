@@ -49,6 +49,10 @@ public record WormholeToPlayerPacketC2S(UUID playerId) implements CustomPacketPa
         });
     }
 
+    public static boolean isTrackable(ServerPlayer trackingPlayer, ServerPlayer trackedPlayer) {
+        return trackingPlayer != trackedPlayer && trackingPlayer.getTeam() == trackedPlayer.getTeam();
+    }
+
     private static ItemStack getWormholePotion(ServerPlayer serverPlayer) {
         Inventory inventory = serverPlayer.getInventory();
         ItemStack stack = inventory.offhand.getFirst();
